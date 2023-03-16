@@ -1,29 +1,57 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Daftar Buku</title>
+    <meta charset="utf-8">
+    <title>Data Buku</title>
+    <style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid black;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th {
+        background-color: #5F9EA0;
+        color: white;
+    }
+    </style>
 </head>
+
 <body>
-    <h1>Daftar Buku</h1>
-    <table border="1">
+    <h1>Data Buku</h1>
+    <table>
         <thead>
             <tr>
                 <th>No</th>
-                <th>Judul</th>
+                <th>Judul Buku</th>
                 <th>Pengarang</th>
                 <th>Penerbit</th>
+                <th>Tahun Terbit</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($buku as $key => $book)
-                <tr>
-                    <td>{{ $key + 1 }}</td>
-                    <td>{{ $book->judul }}</td>
-                    <td>{{ $book->pengarang }}</td>
-                    <td>{{ $book->penerbit }}</td>
-                </tr>
+            @foreach ($buku as $item)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $item->judul }}</td>
+                <td>{{ $item->pengarang }}</td>
+                <td>{{ $item->penerbit }}</td>
+                <td>{{ date($item->tanggal_terbit) }}</td>
+            </tr>
             @endforeach
         </tbody>
     </table>
 </body>
+
 </html>

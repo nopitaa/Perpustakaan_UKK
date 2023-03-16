@@ -76,4 +76,7 @@
             @endforeach
 							</tbody>
 						</table>
+        <div class="pagination justify-content-center">
+            {{ $bukus->appends(request()->query())->links('pagination::bootstrap-4') }}
+        </div>
 @endsection
