@@ -10,13 +10,10 @@ use PDF;
 
 class BukuController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
-    {//search dari admin
+    {
+        //search dari admin
         $search = $request->query('search');
     
         $bukus = Buku::when($search, function ($query, $search) {
@@ -37,7 +34,7 @@ class BukuController extends Controller
         ->orWhere('pengarang', 'like', "%$search%")
         ->orWhere('penerbit', 'like', "%$search%")
         ->orderBy('created_at', 'desc')
-        ->paginate(10);
+        ->paginate(8);
 
     return view('buku.public.index', compact('buku'));
     }
@@ -59,7 +56,6 @@ class BukuController extends Controller
         return view('buku.create');
     }
 
-
     public function store(Request $request)
     {
         // Validasi input field
@@ -70,7 +66,7 @@ class BukuController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'jumlah_halaman'=>'required|max:255',
             'tanggal_terbit'=> 'required|max:255',
-            'deskripsi' =>'required|max:255'
+            'deskripsi' =>'required|max:10000'
         ]);
 
         // Proses upload image
@@ -147,7 +143,7 @@ class BukuController extends Controller
    //function hapus data buku
     public function destroy(Buku $buku)
     {
-        // Delete the image file from storage if it exists
+        //Hapus file gambar dari penyimpanan 
     if ($buku->image) {
         Storage::delete('public/'.$buku->image);
     }

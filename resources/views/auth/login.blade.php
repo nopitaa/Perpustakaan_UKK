@@ -17,7 +17,7 @@
                         <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                             name="email" value="{{ old('email') }}" required autocomplete="email"
-                            placeholder="Masukan Email....." />
+                            placeholder="Masukan Email" />
                         @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -28,7 +28,7 @@
                         <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                         <input id="password" type="password"
                             class="form-control @error('password') is-invalid @enderror" name="password" required
-                            autocomplete="current-password" placeholder="Masukan Password....." />
+                            autocomplete="current-password" placeholder="Masukan Password" />
                         @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -44,14 +44,6 @@
                         <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
                     </div>
                 </form>
-                <div class="social-login">
-                    <span class="social-label">Or login with</span>
-                    <ul class="socials">
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                        <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>

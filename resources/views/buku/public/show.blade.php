@@ -22,11 +22,11 @@
                     <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
-
+                            
                             <img src="{{Storage::url($buku->image)}}" alt="{{ $buku->judul }}"
-                                style="max-width: 230px;">
-
+                            style="width: 300px;">
                         </div>
+                        
                         <div class="col-md-9">
                             <div class="form-group">
                                 <label for="judul">Judul</label>
